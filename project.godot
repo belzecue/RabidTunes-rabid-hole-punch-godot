@@ -1,0 +1,48 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "HolePunchState",
+"language": "GDScript",
+"path": "res://addons/rabidholepuncher/utils/HolePunchState.gd"
+}, {
+"base": "Node",
+"class": "HolePunchStateMachine",
+"language": "GDScript",
+"path": "res://addons/rabidholepuncher/utils/HolePunchStateMachine.gd"
+}, {
+"base": "Node",
+"class": "HolePuncher",
+"language": "GDScript",
+"path": "res://addons/rabidholepuncher/RabidHolePuncher.gd"
+} ]
+_global_script_class_icons={
+"HolePunchState": "res://addons/rabidholepuncher/assets/state.svg",
+"HolePunchStateMachine": "res://addons/rabidholepuncher/assets/state_machine.svg",
+"HolePuncher": "res://addons/rabidholepuncher/assets/punch.svg"
+}
+
+[application]
+
+config/name="RabidHolePunchGodot"
+config/icon="res://icon.png"
+
+[autoload]
+
+RabidHolePuncher="*res://addons/rabidholepuncher/RabidHolePuncher.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/rabidholepuncher/plugin.cfg" )
+
+[physics]
+
+common/enable_pause_aware_picking=true
