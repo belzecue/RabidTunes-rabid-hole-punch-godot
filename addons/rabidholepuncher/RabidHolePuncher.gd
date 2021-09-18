@@ -119,3 +119,11 @@ func start_session() -> void:
 func exit_session() -> void:
 	if _is_host and _state_machine.state.name == "InSession":
 		_state_machine.state.exit_session()
+
+
+func is_host() -> bool:
+	return _is_host
+
+
+func get_player_name() -> String:
+	return _player_name
