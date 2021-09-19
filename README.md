@@ -114,3 +114,7 @@ Clients receive `self_port`, `host_ip` and `host_port`.
 Use these parameters to start a peer to peer network. [You can check the example to see how to do so.](https://gitlab.com/RabidTunes/rabid-hole-punch-example)
 
 
+# Credits
+
+Credits to [SLGamesCregg](https://github.com/SLGamesCregg) for his [Godot HolePuncher plugin](https://godotengine.org/asset-library/asset/608), because it served as a foundation to improve and develop this plugin.
+
