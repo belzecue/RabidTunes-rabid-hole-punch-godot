@@ -18,10 +18,61 @@ Click the node RabidHolePuncher which will be the root of this scene and check t
 
 You have [an example project here](https://gitlab.com/RabidTunes/rabid-hole-punch-example) if you prefer checking directly how it works.
 
-The RabidHolePuncher singleton has a couple signals and methods to get you running.
+The RabidHolePuncher singleton has a couple signals and methods to get you running. To understand the requests sent by the plugin to the server [you can check the server's readme](https://gitlab.com/RabidTunes/rabid-hole-punch-server/-/blob/main/README.md)
+
+### Methods
+
+#### `create_session(session_name: String, player_name: String, max_players: int = 4, session_pass: String = "")`
+
+Call this method to create a session. This will send the host session request with the given parameters
+
+
+#### `join_session(session_name: String, player_name: String, max_players: int = 4, session_pass: String = "")`
+
+Call this method to join a session. This will send the connect session request with the given parameters
+
+
+#### `kick_player(player_name: String)`
+
+Call this method to kick a player from session by its name. Only works if you are already in a session and if you are host, otherwise it does nothing
+
+
+#### `start_session()`
+
+Call this method to start a session. Only works if you are currently in a session.
+
+
+#### `exit_session()`
+
+Call this method to exit the current session
+
+
+#### `is_host()`
+
+Returns true if you previously called `create_session()` as in that case you'd be the host. It does also return true if you connected to a session but the host left and you were the next on the list, so you'd be the new host.
+
+#### `get_player_name()`
+
+Returns the player name you inputted when calling either `create_session()` or `join_session()`
 
 ### Signals
 
-### Methods
+#### `holepunch_progress_update(type, session_name, player_names)`
+
+This signal is emitted anytime there is an event regarding the hole punch process. `session_name` is a String with the name of the session, `player_names` is an array of Strings with the player names inside the session (note: it is always safe to assume that the first element in the list is the host).
+
+`type` can be one of the following default Strings (they are all defined as constants in the RabidHolePunch singleton):
+
+| Type constant | Meaning |
+| ------ | ------ |
+| STATUS_SESSION_CREATED | Emitted after receiving server confirmation that the session has been created |
+| STATUS_SESSION_UPDATED | Emitted after receiving a list of players different than the current list of players (example when a user joins or leaves the session) |
+| STATUS_STARTING_SESSION | Emitted after the host starts the session and you receive the start session message from the server |
+| STATUS_SENDING_GREETINGS | Emitted at the beggining of the "sending greetings" phase |
+| STATUS_SENDING_CONFIRMATIONS | Emitted at the beggining of the "sending confirmations phase |
+
+#### signal holepunch_failure(error)
+
+signal holepunch_success(self_port, host_ip, host_port)
 
 
