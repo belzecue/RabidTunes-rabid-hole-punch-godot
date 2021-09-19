@@ -59,7 +59,7 @@ Returns the player name you inputted when calling either `create_session()` or `
 
 ### Signals
 
-#### `holepunch_progress_update(type, session_name, player_names)`
+#### `holepunch_progress_update(type: String, session_name: String, player_names: Array)`
 
 This signal is emitted anytime there is an event regarding the hole punch process. `session_name` is a String with the name of the session, `player_names` is an array of Strings with the player names inside the session (note: it is always safe to assume that the first element in the list is the host).
 
@@ -73,7 +73,7 @@ This signal is emitted anytime there is an event regarding the hole punch proces
 | STATUS_SENDING_GREETINGS | Emitted at the beggining of the "sending greetings" phase |
 | STATUS_SENDING_CONFIRMATIONS | Emitted at the beggining of the "sending confirmations phase |
 
-#### `holepunch_failure(error)`
+#### `holepunch_failure(error: String)`
 
 This signal is emitted either when the server sends an error response or the client detects an error state. The RabidHolePunch singleton has the following constants to describe the errors:
 
@@ -103,7 +103,7 @@ Client errors:
 | ERR_HOST_NOT_CONFIRMED | After confirmations phase, the host did not confirm their port therefore it is considered unreachable and session cannot start |
 
 
-#### `holepunch_success(self_port, host_ip, host_port)`
+#### `holepunch_success(self_port: int, host_ip: String, host_port: int)`
 
 Signal emitted when the holepunch process is successful. Parameters are different on host and clients.
 
