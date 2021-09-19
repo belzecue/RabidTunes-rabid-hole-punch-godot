@@ -83,27 +83,32 @@ Server errors:
 | ERR_SESSION_NON_EXISTENT | Session does not exist (when connecting, for example) |
 | ERR_SESSION_PASSWORD_MISMATCH | Incorrect password for session |
 | ERR_SESSION_SINGLE_PLAYER | Tried to start a single player session |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
-| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_FULL | Session cannot have more players |
+| ERR_SESSION_PLAYER_NAME_IN_USE | Player name is already in use in the given session |
+| ERR_SESSION_PLAYER_NON_EXISTENT | Player does not exist in the current session (for kick command, for example) |
+| ERR_SESSION_PLAYER_NON_HOST | Player is not host, probably tried to execute host command as non host |
+| ERR_SESSION_PLAYER_KICKED_BY_HOST | Player was kicked by host |
+| ERR_SESSION_PLAYER_EXIT | Player exited session |
+| ERR_SESSION_NOT_STARTED | Session has not started yet. You shouldn't receive this message unless you did something really funky |
+| ERR_SESSION_TIMEOUT | Session timed out (they have a maximum time to live) |
+| ERR_PLAYER_TIMEOUT | Player timed out (server didn't receive ping in a long time from player) |
 
-const ERR_SESSION_FULL: String = "error:session_full"
-const ERR_SESSION_PLAYER_NAME_IN_USE: String = "error:player_name_in_use"
-const ERR_SESSION_PLAYER_NON_EXISTENT: String = "error:non_existent_player"
-const ERR_SESSION_PLAYER_NON_HOST: String = "error:non_host_player"
-const ERR_SESSION_PLAYER_KICKED_BY_HOST: String = "error:kicked_by_host"
-const ERR_SESSION_PLAYER_EXIT: String = "error:player_exited_session"
-const ERR_SESSION_NOT_STARTED: String = "error:session_not_started"
-const ERR_SESSION_TIMEOUT: String = "error:session_timeout"
-const ERR_PLAYER_TIMEOUT: String = "error:player_timeout"
+Client errors:
+| Error constant | Description |
+| ------ | ------ |
+| ERR_SERVER_TIMEOUT | Server is not answering and it timed out |
+| ERR_UNREACHABLE_SELF | After greetings phase, the client did not receive any greeting so it is considered unreachable |
+| ERR_HOST_NOT_CONFIRMED | After confirmations phase, the host did not confirm their port therefore it is considered unreachable and session cannot start |
 
 
+#### `holepunch_success(self_port, host_ip, host_port)`
 
-signal holepunch_success(self_port, host_ip, host_port)
+Signal emitted when the holepunch process is successful. Parameters are different on host and clients.
+
+Host does only receive self_port, the other parameters are set to null.
+
+Clients receive self_port, host_ip and host_port.
+
+Use these parameters to start a peer to peer network. [You can check the example to see how to do so.](https://gitlab.com/RabidTunes/rabid-hole-punch-example)
 
 
