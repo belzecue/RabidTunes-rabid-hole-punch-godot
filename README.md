@@ -107,9 +107,9 @@ Client errors:
 
 Signal emitted when the holepunch process is successful. Parameters are different on host and clients.
 
-Host does only receive self_port, the other parameters are set to null.
+Host does only receive `self_port`, the other parameters are set to null.
 
-Clients receive self_port, host_ip and host_port.
+Clients receive `self_port`, `host_ip` and `host_port`.
 
 Use these parameters to start a peer to peer network. [You can check the example to see how to do so.](https://gitlab.com/RabidTunes/rabid-hole-punch-example)
 
