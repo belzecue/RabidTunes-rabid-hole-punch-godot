@@ -71,7 +71,38 @@ This signal is emitted anytime there is an event regarding the hole punch proces
 | STATUS_SENDING_GREETINGS | Emitted at the beggining of the "sending greetings" phase |
 | STATUS_SENDING_CONFIRMATIONS | Emitted at the beggining of the "sending confirmations phase |
 
-#### signal holepunch_failure(error)
+#### `holepunch_failure(error)`
+
+This signal is emitted either when the server sends an error response or the client detects an error state. The RabidHolePunch singleton has the following constants to describe the errors:
+
+Server errors:
+| Error constant | Description |
+| ------ | ------ |
+| ERR_REQUEST_INVALID | One of the requests sent was invalid. It is unlikely you'll ever receive this, but bugs can happen |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_NON_EXISTENT | Session does not exist (when connecting, for example) |
+| ERR_SESSION_PASSWORD_MISMATCH | Incorrect password for session |
+| ERR_SESSION_SINGLE_PLAYER | Tried to start a single player session |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+| ERR_SESSION_EXISTS | Session already exists |
+
+const ERR_SESSION_FULL: String = "error:session_full"
+const ERR_SESSION_PLAYER_NAME_IN_USE: String = "error:player_name_in_use"
+const ERR_SESSION_PLAYER_NON_EXISTENT: String = "error:non_existent_player"
+const ERR_SESSION_PLAYER_NON_HOST: String = "error:non_host_player"
+const ERR_SESSION_PLAYER_KICKED_BY_HOST: String = "error:kicked_by_host"
+const ERR_SESSION_PLAYER_EXIT: String = "error:player_exited_session"
+const ERR_SESSION_NOT_STARTED: String = "error:session_not_started"
+const ERR_SESSION_TIMEOUT: String = "error:session_timeout"
+const ERR_PLAYER_TIMEOUT: String = "error:player_timeout"
+
+
 
 signal holepunch_success(self_port, host_ip, host_port)
 
