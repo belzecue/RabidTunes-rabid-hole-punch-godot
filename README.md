@@ -2,6 +2,8 @@
 
 Godot plugin that, alongside the Rabid Hole Punch Server, allows peer to peer communication via UDP Hole Punching between devices that are behind NAT
 
+**Please note that although UDP Hole Punching is a great technique it is not successful 100% of the time due to different NAT and firewall configurations**
+
 ## Installation and configuration
 
 Clone this repository and copy the addons folder into your Godot Project.
